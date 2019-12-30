@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="WareView">
+        <attr name="corner" format="dimension"/>
+        <attr name="waveColor" format="color"/> //圆圈的颜色
+        <attr name="spaceWidth" format="dimension"/> //圆圈之间的间距
+        <attr name="width" format="dimension"/>  //圆的半径
+    </declare-styleable>
+</resources>

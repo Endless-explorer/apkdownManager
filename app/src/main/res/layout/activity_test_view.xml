@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:jmy="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".TestViewActivity">
+    <com.jmy.testdownloaddemo.WareView
+        jmy:waveColor="@color/colorAccent"
+        android:layout_height="600dp"
+        android:layout_width="600dp"
+        jmy:width="100dp"
+        jmy:spaceWidth="200dp"
+        jmy:corner="2dp" />
+</LinearLayout>

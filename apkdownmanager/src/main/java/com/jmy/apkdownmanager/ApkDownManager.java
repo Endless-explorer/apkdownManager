@@ -10,7 +10,7 @@ import android.util.Log;
 import androidx.core.content.FileProvider;
 import com.jmy.apkdownmanager.net.ApkDownCall;
 import com.jmy.apkdownmanager.net.IDownManager;
-import com.jmy.apkdownmanager.net.iUiCallBack;
+import com.jmy.apkdownmanager.net.IUiCallBack;
 
 import java.io.File;
 
@@ -21,21 +21,10 @@ import java.io.File;
 public class ApkDownManager {
     private static ApkDownManager manager;
     private  IDownManager iDownManager;
-    public static final int OKHTTP=101;
-    public static final int VOLLEY=102;
     private static Handler handler=new Handler(Looper.getMainLooper());
 
-    public  void setiDownManager(int flag) {
-        switch (flag){
-            case OKHTTP:
-                this.iDownManager=new OkHttpDownManager();
-                break;
-            case VOLLEY:
-                break;
-        }
-    }
-
     private ApkDownManager() {
+        this.iDownManager=new OkHttpDownManager();
     }
 
     public static ApkDownManager instance(){
@@ -49,7 +38,7 @@ public class ApkDownManager {
         return manager;
     }
 
-    public void download(String apkName, final Activity activity, String url, final iUiCallBack uiCallBack){
+    public void download(String apkName, final Activity activity, String url, final IUiCallBack uiCallBack){
         if(apkName==null){
             apkName=System.currentTimeMillis()+"";
         }

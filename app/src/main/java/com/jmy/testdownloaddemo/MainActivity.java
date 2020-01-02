@@ -8,11 +8,7 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.jmy.apkdownmanager.ApkDownManager;
-import com.jmy.apkdownmanager.OkHttpDownManager;
-import com.jmy.apkdownmanager.net.ApkDownCall;
-import com.jmy.apkdownmanager.net.iUiCallBack;
-
-import java.io.File;
+import com.jmy.apkdownmanager.net.IUiCallBack;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -24,10 +20,9 @@ public class MainActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String url="http://p.gdown.baidu.com/4d5dc9a856b5dd63747666b4c6474ec7f89aa82c8c435624ae9eb8f03e13990fc0a1c3901103a326b882b00f235fa0532ac7973b9c8b2db45121e28e33ecee72269dc0c1087e0876b27e735c3da25ae9adda3c73771dde38474ca9db86e06ae0aea385d90238c160b363032bf055a6f5cd515ab984d249d2ed3735635ddb76817c3227a70a9f2fda6a06c875951ba80dde16643b19525d9062216d0338e5c563486f78df69a09917c77aa08585948215d57a34a7c908e1974b810b92539c0849bb2372f69110188ce863a8c61ccb19836e730a3802bf415680de9758c1cb31b7918055740a7e101be08bc1783cbb1e22387252037a701c9052651f73c5d0e6347f90b5ecec3a91a3acd256cf359fb01ce2d6bf44aed682d51e5fd03be74ec1d4c4233f889863cbb7901d242f9f5090d5b9cad0054102fcd847a9babe01cde84fc5bc9fc066dd894cb8420f96f1a4d67c";
-                String apkName=getResources().getString(R.string.app_name);
-                ApkDownManager.instance().setiDownManager(ApkDownManager.OKHTTP);
-                ApkDownManager.instance().download(apkName, MainActivity.this, url, new iUiCallBack() {
+                String url="http://p.gdown.baidu.com/07aecb4e46127553729ea9137908b4362f9f1d42e814794e3463f75b328fb294c3868af2386741d195dec95b86beb20bdf843d2e792dc038e3f42d2d758f31b8c89db5c4c8608f4de93a9f46abf9ec6b6d20dc0c58422d40f6d7d1a22c43aa9ccbaa22c22eba60f33afe00f0dd138f5cfd72bb721b8ab5932a8b6f0318eddba0e2f48e1b41a0d4cebc08522b3cb5c2f8469dd34213890053aa0c921248662be6e8c9bc01e28b80d6b9742033e72b07c84dd4e14dc8d79310269387d03218084d15ac8d346690f16bfcc5772889701593cd88492235593de8dc520fa2b38c54b0b4c2d68fc83f439b4ed655a27f0c8a545be16ede96ceb7c9a71d2b528a895461";
+                String apkName="baiDuMap";
+                ApkDownManager.instance().download(apkName, MainActivity.this, url, new IUiCallBack() {
                     @Override
                     public void uiDownSuccess() {
                         Toast.makeText(MainActivity.this,"下载Akp成功",Toast.LENGTH_SHORT).show();

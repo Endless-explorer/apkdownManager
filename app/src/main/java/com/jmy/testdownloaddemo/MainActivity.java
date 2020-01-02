@@ -29,8 +29,8 @@ public class MainActivity extends AppCompatActivity {
                     }
 
                     @Override
-                    public void uiProgress(String progress) {
-                        button.setText(progress);
+                    public void uiProgress(int progress) {
+                        button.setText(progress+"%");
                     }
 
                     @Override

@@ -65,7 +65,7 @@ public class ApkDownManager {
                     @Override
                     public void run() {
                         if(uiCallBack!=null){
-                            uiCallBack.uiProgress(progress+"%");
+                            uiCallBack.uiProgress(progress);
                         }
                     }
                 });

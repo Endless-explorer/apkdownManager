@@ -7,7 +7,7 @@ package com.jmy.apkdownmanager.net;
 public interface IUiCallBack {
     void uiDownSuccess();
 
-    void uiProgress(String progress);
+    void uiProgress(int progress);
 
     void uiDownFailure(Throwable e);
 

@@ -2,6 +2,7 @@ package com.jmy.apkdownmanager;
 
 import android.os.Handler;
 import android.os.Looper;
+import android.util.Log;
 
 import com.jmy.apkdownmanager.net.ApkDownCall;
 import com.jmy.apkdownmanager.net.IDownManager;
@@ -46,6 +47,7 @@ public class OkHttpDownManager implements IDownManager {
             @Override
             public void onFailure(@NotNull final Call call,final  @NotNull IOException e) {
                 downCall.onFailure(e);
+                Log.i("jmy","返回的下载错误="+e.getMessage());
             }
 
             @Override

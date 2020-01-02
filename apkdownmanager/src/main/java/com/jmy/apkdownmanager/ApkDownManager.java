@@ -6,9 +6,8 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Handler;
 import android.os.Looper;
-
+import android.util.Log;
 import androidx.core.content.FileProvider;
-
 import com.jmy.apkdownmanager.net.ApkDownCall;
 import com.jmy.apkdownmanager.net.IDownManager;
 import com.jmy.apkdownmanager.net.iUiCallBack;
@@ -55,7 +54,7 @@ public class ApkDownManager {
             apkName=System.currentTimeMillis()+"";
         }
         File file=new File(activity.getApplicationContext().getCacheDir(),apkName+".apk");
-
+        Log.i("jmy","文件路径为:"+file.getAbsolutePath());
         iDownManager.download(url, file, new ApkDownCall() {
             @Override
             public void onSuccess(File file) {
@@ -102,7 +101,8 @@ public class ApkDownManager {
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         intent.setAction(Intent.ACTION_VIEW);
         Uri uri;
-        if(Build.VERSION.SDK_INT>Build.VERSION_CODES.N){
+        if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.N){
+            intent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
             uri= FileProvider.getUriForFile(activity,activity.getPackageName()+".fileprovider",file);
             intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
             intent.addFlags(Intent.FLAG_GRANT_WRITE_URI_PERMISSION);

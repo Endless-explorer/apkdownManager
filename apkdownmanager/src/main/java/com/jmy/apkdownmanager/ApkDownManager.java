@@ -1,6 +1,7 @@
 package com.jmy.apkdownmanager;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Build;
@@ -38,11 +39,11 @@ public class ApkDownManager {
         return manager;
     }
 
-    public void download(String apkName, final Activity activity, String url, final IUiCallBack uiCallBack){
+    public void download(String apkName, final Context context, String url, final IUiCallBack uiCallBack){
         if(apkName==null){
             apkName=System.currentTimeMillis()+"";
         }
-        File file=new File(activity.getApplicationContext().getCacheDir(),apkName+".apk");
+        File file=new File(context.getApplicationContext().getCacheDir(),apkName+".apk");
         Log.i("jmy","文件路径为:"+file.getAbsolutePath());
         iDownManager.download(url, file, new ApkDownCall() {
             @Override
@@ -55,7 +56,7 @@ public class ApkDownManager {
                         }
                     }
                 });
-                install(activity,file);
+                install(context,file);
             }
 
             @Override
@@ -85,21 +86,21 @@ public class ApkDownManager {
     }
 
 
-    private void install(Activity activity, File file){
+    private void install(Context context, File file){
         Intent intent=new Intent();
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         intent.setAction(Intent.ACTION_VIEW);
         Uri uri;
         if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.N){
             intent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-            uri= FileProvider.getUriForFile(activity,activity.getPackageName()+".fileprovider",file);
+            uri= FileProvider.getUriForFile(context,context.getPackageName()+".fileprovider",file);
             intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
             intent.addFlags(Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
         }else {
             uri=Uri.fromFile(file);
         }
         intent.setDataAndType(uri,"application/vnd.android.package-archive");
-        activity.startActivity(intent);
+        context.startActivity(intent);
 
     }
 

@@ -1,13 +1,11 @@
 package com.jmy.apkdownmanager;
 
-import android.os.Handler;
-import android.os.Looper;
 import android.util.Log;
+
+import androidx.annotation.NonNull;
 
 import com.jmy.apkdownmanager.net.ApkDownCall;
 import com.jmy.apkdownmanager.net.IDownManager;
-
-import org.jetbrains.annotations.NotNull;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -45,13 +43,13 @@ public class OkHttpDownManager implements IDownManager {
         Call call=okHttpClient.newCall(request);
         call.enqueue(new Callback() {
             @Override
-            public void onFailure(@NotNull final Call call,final  @NotNull IOException e) {
+            public void onFailure(@NonNull final Call call,final  @NonNull IOException e) {
                 downCall.onFailure(e);
                 Log.i("jmy","返回的下载错误="+e.getMessage());
             }
 
             @Override
-            public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
+            public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
                 InputStream is=null;
                 OutputStream os=null;
                 try {
